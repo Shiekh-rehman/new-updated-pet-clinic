@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islamabad Pets Clinic | Dr. Allah Bakhsh | Bharakahu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a1628;
+  --deep:#0d2040;
+  --blue:#1a4a8a;
+  --bright:#2563eb;
+  --sky:#3b82f6;
+  --ice:#dbeafe;
+  --white:#ffffff;
+  --cream:#f8faff;
+  --gold:#f59e0b;
+  --text:#0f172a;
+  --muted:#64748b;
+  --wa:#25D366;
+  --border:rgba(37,99,235,.12);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--sky);border-radius:3px}
+
+/* ── CURSOR ── */
+.cursor{position:fixed;width:12px;height:12px;background:var(--sky);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s,opacity .3s;mix-blend-mode:screen}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(59,130,246,.5);border-radius:50%;pointer-events:none;z-index:9998;transition:all .2s ease;mix-blend-mode:screen}
+@media(max-width:768px){.cursor,.cursor-ring{display:none}}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+nav.scrolled{background:rgba(10,22,40,.97);backdrop-filter:blur(20px);padding:12px 5%;box-shadow:0 2px 40px rgba(0,0,0,.3)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(59,130,246,.4);transition:border-color .3s}
+nav.scrolled .logo-img{border-color:var(--sky)}
+.logo-text-main{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--white);font-weight:700;line-height:1.1}
+.logo-text-sub{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:2.5px;text-transform:uppercase;font-weight:400}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.7);font-weight:500;font-size:13.5px;transition:color .3s;letter-spacing:.3px}
+.nav-links a:hover{color:var(--sky)}
+.nav-cta{background:linear-gradient(135deg,var(--bright),var(--sky));color:var(--white)!important;padding:10px 24px;border-radius:50px;font-weight:600!important;font-size:13px!important;transition:all .3s!important;letter-spacing:.5px!important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.4)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;background:none;border:none}
+.hamburger span{width:24px;height:2px;background:var(--white);transition:all .3s;display:block}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,22,40,.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:26px;font-family:'Cormorant Garamond',serif;color:var(--white);text-decoration:none;font-weight:600;opacity:0;animation:mobileIn .4s ease forwards}
+@keyframes mobileIn{to{opacity:1}}
+.mobile-close{position:absolute;top:24px;right:5%;font-size:28px;cursor:pointer;color:rgba(255,255,255,.5);background:none;border:none}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--navy)}
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:rgba(59,130,246,.6);border-radius:50%;animation:particleFloat linear infinite}
+@keyframes particleFloat{0%{transform:translateY(100vh) translateX(0);opacity:0}10%{opacity:1}90%{opacity:.5}100%{transform:translateY(-10vh) translateX(var(--dx));opacity:0}}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 30% 60%,rgba(26,74,138,.6) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 80% 20%,rgba(37,99,235,.15) 0%,transparent 60%)}
+.hero-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.04) 1px,transparent 1px);background-size:50px 50px}
+.hero-content{position:relative;z-index:2;padding:130px 5% 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1400px;margin:0 auto;width:100%}
+.hero-left{}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(59,130,246,.3);color:#93c5fd;padding:8px 20px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .8s ease both}
+.hero-badge-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,72px);color:var(--white);line-height:1.06;font-weight:700;margin-bottom:10px;animation:fadeUp .8s .15s ease both}
+.hero-title .line2{color:var(--sky);font-style:italic}
+.hero-clinic-name{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,28px);color:rgba(255,255,255,.5);font-weight:400;margin-bottom:28px;animation:fadeUp .8s .25s ease both;letter-spacing:1px}
+.hero-desc{color:rgba(255,255,255,.65);font-size:clamp(14px,1.5vw,16px);line-height:1.8;max-width:480px;margin-bottom:40px;animation:fadeUp .8s .35s ease both}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;animation:fadeUp .8s .45s ease both;margin-bottom:48px}
+.btn-primary{background:linear-gradient(135deg,var(--bright),var(--sky));color:var(--white);padding:16px 36px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:none;cursor:pointer;letter-spacing:.3px}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(37,99,235,.4)}
+.btn-wa{background:var(--wa);color:var(--white);padding:16px 36px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;letter-spacing:.3px}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-3px);box-shadow:0 16px 40px rgba(37,211,102,.35)}
+.hero-stats{display:flex;gap:36px;animation:fadeUp .8s .55s ease both}
+.stat{text-align:left}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:700;color:var(--sky);line-height:1}
+.stat-label{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
+.hero-right{position:relative;display:flex;justify-content:center;animation:fadeLeft .8s .3s ease both}
+.doctor-card{position:relative;width:100%;max-width:420px}
+.doctor-img-wrap{position:relative;border-radius:28px;overflow:hidden;border:1px solid rgba(59,130,246,.2);box-shadow:0 40px 80px rgba(0,0,0,.4)}
+.doctor-img-wrap img{width:100%;height:520px;object-fit:cover;object-position:top center;display:block;filter:brightness(1.05) contrast(1.05)}
+.doctor-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.85) 0%,transparent 50%)}
+.doctor-info-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px}
+.doctor-name-overlay{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--white);font-weight:700;margin-bottom:4px}
+.doctor-qual-overlay{font-size:12px;color:rgba(255,255,255,.6);letter-spacing:1px}
+.floating-badge{position:absolute;top:24px;right:-16px;background:var(--white);border-radius:16px;padding:14px 18px;box-shadow:0 12px 32px rgba(0,0,0,.25);text-align:center;animation:floatBadge 3s ease-in-out infinite}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.floating-badge-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--blue);line-height:1}
+.floating-badge-label{font-size:10px;color:var(--muted);font-weight:500;letter-spacing:.5px}
+.hero-paw-accent{position:absolute;bottom:80px;left:-30px;font-size:120px;opacity:.04;pointer-events:none;animation:rotate360 30s linear infinite}
+@keyframes rotate360{to{transform:rotate(360deg)}}
+.logo-badge{position:absolute;top:-16px;left:24px;width:72px;height:72px;border-radius:50%;border:3px solid var(--navy);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.logo-badge img{width:100%;height:100%;object-fit:cover}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+
+/* ── SECTION COMMONS ── */
+section{padding:100px 5%}
+.section-inner{max-width:1300px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.08);color:var(--bright);padding:7px 18px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;border:1px solid rgba(37,99,235,.15)}
+.section-tag::before{content:'';width:6px;height:6px;background:var(--sky);border-radius:50%}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,54px);font-weight:700;color:var(--navy);line-height:1.12;margin-bottom:16px}
+.section-sub{color:var(--muted);font-size:15px;line-height:1.8;max-width:560px}
+
+/* AOS */
+[data-aos]{opacity:0;transition:all .7s cubic-bezier(.25,.46,.45,.94)}
+[data-aos="fade-up"]{transform:translateY(40px)}
+[data-aos="fade-right"]{transform:translateX(-40px)}
+[data-aos="fade-left"]{transform:translateX(40px)}
+[data-aos="zoom-in"]{transform:scale(.9)}
+[data-aos].aos-animate{opacity:1;transform:none}
+
+/* ── ABOUT/INTRO ── */
+#about{background:var(--white);padding:80px 5%}
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+.about-img-side{position:relative}
+.about-clinic-img{width:100%;border-radius:24px;height:760px;object-fit:cover;box-shadow:0 24px 64px rgba(10,22,40,.15)}
+.about-img-accent{position:absolute;bottom:-24px;right:-24px;background:linear-gradient(135deg,var(--blue),var(--sky));border-radius:20px;padding:24px;color:white;text-align:center;box-shadow:0 12px 32px rgba(37,99,235,.3)}
+.about-img-accent .num{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:700;line-height:1}
+.about-img-accent .lbl{font-size:11px;letter-spacing:1px;opacity:.8;text-transform:uppercase}
+.about-text .intro-para{font-size:16px;line-height:1.9;color:var(--muted);margin-bottom:20px}
+.about-text .intro-para strong{color:var(--navy)}
+.about-checklist{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.about-check{display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:var(--muted);line-height:1.5}
+.about-check .chk{width:22px;height:22px;min-width:22px;background:rgba(37,99,235,.1);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--bright);font-size:11px;margin-top:1px}
+.dr-qual-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.qual-badge{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;padding:10px 18px;border-radius:12px;font-size:13px;font-weight:600;letter-spacing:.5px}
+
+/* ── SERVICES ── */
+#services{background:var(--cream)}
+.services-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;gap:20px;flex-wrap:wrap}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.service-card{background:var(--white);border-radius:22px;padding:32px 26px;transition:all .4s cubic-bezier(.25,.46,.45,.94);position:relative;overflow:hidden;border:1px solid var(--border);cursor:default}
+.service-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--bright),var(--sky));opacity:0;transition:opacity .4s;border-radius:22px}
+.service-card:hover{transform:translateY(-10px);box-shadow:0 32px 64px rgba(37,99,235,.15);border-color:transparent}
+.service-card:hover::after{opacity:1}
+.service-card-inner{position:relative;z-index:1}
+.service-icon{width:60px;height:60px;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(59,130,246,.15));border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;transition:all .4s}
+.service-card:hover .service-icon{background:rgba(255,255,255,.2);transform:scale(1.1) rotate(-5deg)}
+.service-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);margin-bottom:10px;font-weight:700;transition:color .3s}
+.service-card p{color:var(--muted);font-size:13.5px;line-height:1.7;transition:color .3s}
+.service-card:hover h3,.service-card:hover p{color:var(--white)}
+.service-card:hover .service-icon{background:rgba(255,255,255,.2)}
+.service-num{position:absolute;top:20px;right:20px;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:rgba(37,99,235,.06);line-height:1;transition:color .3s}
+.service-card:hover .service-num{color:rgba(255,255,255,.08)}
+
+/* ── WHY ── */
+#why{background:var(--navy);position:relative;overflow:hidden}
+#why::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.12),transparent 70%)}
+#why .section-title{color:var(--white)}
+#why .section-sub{color:rgba(255,255,255,.5)}
+#why .section-tag{background:rgba(59,130,246,.1);color:#93c5fd;border-color:rgba(59,130,246,.2)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px}
+.why-features{display:flex;flex-direction:column;gap:18px}
+.why-feat{display:flex;gap:16px;padding:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:18px;transition:all .4s;align-items:flex-start}
+.why-feat:hover{background:rgba(37,99,235,.15);border-color:rgba(59,130,246,.3);transform:translateX(8px)}
+.feat-icon{width:46px;height:46px;min-width:46px;background:rgba(59,130,246,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .3s}
+.why-feat:hover .feat-icon{transform:scale(1.1)}
+.feat-text h4{color:var(--white);font-weight:600;margin-bottom:6px;font-size:15px}
+.feat-text p{color:rgba(255,255,255,.45);font-size:13px;line-height:1.6}
+.why-visual-side{position:relative;display:flex;flex-direction:column;gap:20px}
+.vet-photo{border-radius:22px;overflow:hidden;position:relative}
+.vet-photo img{width:100%;height:340px;object-fit:cover;object-position:top center;display:block;transition:transform .6s}
+.vet-photo:hover img{transform:scale(1.03)}
+.vet-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7),transparent);pointer-events:none}
+.vet-overlay-text{position:absolute;bottom:20px;left:20px;color:white}
+.vet-overlay-text h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700}
+.vet-overlay-text p{font-size:12px;opacity:.7}
+.why-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.why-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;text-align:center;transition:all .3s}
+.why-stat:hover{background:rgba(37,99,235,.2);border-color:rgba(59,130,246,.3)}
+.why-stat-num{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:var(--sky);line-height:1}
+.why-stat-lbl{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px;margin-top:4px;text-transform:uppercase}
+
+/* ── REVIEWS ── */
+#reviews{background:var(--white);overflow:hidden}
+.reviews-marquee-outer{overflow:hidden;margin-top:56px;position:relative}
+.reviews-marquee-outer::before,.reviews-marquee-outer::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.reviews-marquee-outer::before{left:0;background:linear-gradient(to right,var(--white),transparent)}
+.reviews-marquee-outer::after{right:0;background:linear-gradient(to left,var(--white),transparent)}
+.reviews-row{display:flex;gap:20px;width:max-content;margin-bottom:20px;animation:scrollLeft 35s linear infinite}
+.reviews-row.reverse{animation:scrollRight 35s linear infinite}
+.reviews-row:hover{animation-play-state:paused}
+@keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scrollRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.review-card{background:var(--cream);border-radius:20px;padding:24px;width:310px;flex-shrink:0;border:1px solid var(--border);transition:all .3s}
+.review-card:hover{border-color:var(--sky);box-shadow:0 12px 32px rgba(37,99,235,.1);transform:translateY(-4px)}
+.stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:14px}
+.review-text{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:18px;font-style:italic}
+.reviewer{display:flex;align-items:center;gap:12px}
+.rev-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:white;font-family:'Cormorant Garamond',serif}
+.rev-name{font-weight:600;font-size:13px;color:var(--navy)}
+.rev-loc{font-size:11px;color:var(--muted)}
+.rev-verified{display:inline-flex;align-items:center;gap:4px;background:rgba(74,222,128,.1);color:#16a34a;border-radius:50px;padding:3px 10px;font-size:10px;font-weight:600;margin-top:4px}
+.rev-verified i{font-size:9px}
+
+/* ── GALLERY ── */
+#gallery{background:var(--cream);padding:100px 5%}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto;gap:16px;margin-top:56px}
+.gallery-item{border-radius:18px;overflow:hidden;position:relative;cursor:pointer}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gallery-img-placeholder{width:100%;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:center;justify-content:center;font-size:60px;transition:transform .5s}
+.gallery-item:nth-child(1) .gallery-img-placeholder{height:380px}
+.gallery-img-placeholder{height:180px}
+.gallery-item:hover .gallery-img-placeholder{transform:scale(1.05)}
+.gallery-overlay{position:absolute;inset:0;background:rgba(10,22,40,.5);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;color:white;font-size:24px}
+.gallery-item:hover .gallery-overlay{opacity:1}
+
+/* ── APPOINTMENT ── */
+#appointment{background:var(--navy);position:relative;overflow:hidden}
+#appointment::before{content:'';position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.1),transparent 70%)}
+#appointment .section-title{color:var(--white)}
+#appointment .section-sub{color:rgba(255,255,255,.5)}
+#appointment .section-tag{background:rgba(59,130,246,.1);color:#93c5fd;border-color:rgba(59,130,246,.2)}
+.appt-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;margin-top:56px;align-items:start}
+.appt-form-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:40px}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--white);font-weight:700;margin-bottom:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;color:rgba(255,255,255,.7);font-size:12px;font-weight:600;margin-bottom:8px;letter-spacing:.8px;text-transform:uppercase}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 16px;color:var(--white);font-size:14px;font-family:'Outfit',sans-serif;transition:all .3s;outline:none;-webkit-appearance:none}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.25)}
+.form-group select option{background:var(--navy)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--sky);background:rgba(59,130,246,.1);box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+.form-group textarea{resize:none;height:100px}
+.img-upload-area{border:1.5px dashed rgba(255,255,255,.2);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:all .3s;background:rgba(255,255,255,.03)}
+.img-upload-area:hover{border-color:var(--sky);background:rgba(59,130,246,.07)}
+.img-upload-area i{font-size:28px;color:rgba(255,255,255,.3);margin-bottom:8px;display:block}
+.img-upload-area p{color:rgba(255,255,255,.4);font-size:13px}
+.img-upload-area span{font-size:11px;color:rgba(255,255,255,.25)}
+.img-preview-area{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.img-thumb{width:70px;height:70px;border-radius:10px;object-fit:cover;border:1.5px solid rgba(59,130,246,.4)}
+.btn-submit{width:100%;background:var(--wa);color:var(--white);padding:18px;border-radius:14px;font-size:15px;font-weight:700;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;transition:all .3s;font-family:'Outfit',sans-serif;letter-spacing:.5px;margin-top:4px}
+.btn-submit:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,.35)}
+.appt-info-side{display:flex;flex-direction:column;gap:18px}
+.appt-info-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px;display:flex;gap:14px;align-items:flex-start;transition:all .3s}
+.appt-info-card:hover{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.25)}
+.appt-icon{width:44px;height:44px;min-width:44px;background:rgba(59,130,246,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--sky);font-size:18px}
+.appt-icon-text strong{color:var(--white);display:block;font-size:14px;margin-bottom:4px}
+.appt-icon-text span{color:rgba(255,255,255,.45);font-size:13px;line-height:1.5}
+.timing-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.timing-item{background:rgba(255,255,255,.05);border-radius:10px;padding:12px;text-align:center}
+.timing-day{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
+.timing-time{font-weight:600;color:var(--white);font-size:13px;margin-top:2px}
+
+/* ── MAP ── */
+#map-section{background:var(--white);padding:80px 5%}
+.map-wrapper{border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(10,22,40,.12);margin-top:48px}
+.map-wrapper iframe{width:100%;height:420px;border:none;display:block}
+.map-cta-row{display:flex;align-items:center;justify-content:space-between;margin-top:28px;flex-wrap:wrap;gap:16px}
+.map-address{display:flex;align-items:flex-start;gap:14px}
+.map-address-icon{width:44px;height:44px;min-width:44px;background:linear-gradient(135deg,var(--blue),var(--sky));border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-size:18px}
+.map-address-text strong{color:var(--navy);font-size:15px;display:block}
+.map-address-text span{color:var(--muted);font-size:13.5px;line-height:1.5}
+.map-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-directions{background:linear-gradient(135deg,var(--bright),var(--sky));color:white;padding:14px 28px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s}
+.btn-directions:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,99,235,.35)}
+.btn-call{background:var(--cream);color:var(--navy);border:1.5px solid var(--border);padding:14px 28px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s}
+.btn-call:hover{border-color:var(--bright);color:var(--bright)}
+
+/* ── CHATBOT ── */
+.chatbot-btn{position:fixed;bottom:30px;left:30px;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));color:white;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;z-index:998;box-shadow:0 8px 24px rgba(37,99,235,.4);transition:all .3s;border:none;animation:chatPulse 2.5s ease-in-out infinite}
+@keyframes chatPulse{0%,100%{box-shadow:0 8px 24px rgba(37,99,235,.4),0 0 0 0 rgba(37,99,235,.2)}60%{box-shadow:0 8px 24px rgba(37,99,235,.4),0 0 0 16px rgba(37,99,235,0)}}
+.chatbot-btn:hover{transform:scale(1.1)}
+.chatbot-window{position:fixed;bottom:110px;left:30px;width:340px;background:var(--white);border-radius:24px;box-shadow:0 24px 60px rgba(10,22,40,.2);z-index:997;display:none;flex-direction:column;overflow:hidden;border:1px solid var(--border);animation:chatOpen .3s cubic-bezier(.34,1.56,.64,1)}
+.chatbot-window.open{display:flex}
+@keyframes chatOpen{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.chat-header{background:linear-gradient(135deg,var(--navy),var(--blue));padding:18px 20px;display:flex;align-items:center;gap:12px}
+.chat-header-avatar{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:20px}
+.chat-header-info .name{color:white;font-weight:600;font-size:14px}
+.chat-header-info .status{color:rgba(255,255,255,.5);font-size:11px;display:flex;align-items:center;gap:5px}
+.status-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:blink 1.5s infinite}
+.chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;font-size:18px;transition:color .3s}
+.chat-close:hover{color:white}
+.chat-messages{height:280px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:13px;line-height:1.5;animation:msgIn .3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{background:var(--cream);color:var(--text);border-bottom-left-radius:4px;align-self:flex-start;border:1px solid var(--border)}
+.msg.user{background:linear-gradient(135deg,var(--bright),var(--sky));color:white;border-bottom-right-radius:4px;align-self:flex-end}
+.msg-time{font-size:10px;opacity:.5;margin-top:4px}
+.quick-replies{display:flex;flex-wrap:wrap;gap:7px;padding:10px 16px 0}
+.quick-btn{background:rgba(37,99,235,.08);color:var(--bright);border:1px solid rgba(37,99,235,.2);border-radius:50px;padding:6px 12px;font-size:12px;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
+.quick-btn:hover{background:var(--bright);color:white}
+.chat-input-row{display:flex;gap:8px;padding:14px 14px 16px;border-top:1px solid var(--border)}
+.chat-input{flex:1;background:var(--cream);border:1px solid var(--border);border-radius:50px;padding:10px 16px;font-size:13px;font-family:'Outfit',sans-serif;outline:none;color:var(--text);transition:border-color .3s}
+.chat-input:focus{border-color:var(--sky)}
+.chat-send{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--bright),var(--sky));color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .3s;flex-shrink:0}
+.chat-send:hover{transform:scale(1.1)}
+.typing-indicator{display:flex;gap:4px;padding:8px 12px;align-self:flex-start}
+.typing-dot{width:7px;height:7px;background:var(--muted);border-radius:50%;animation:typingAnim .8s ease-in-out infinite}
+.typing-dot:nth-child(2){animation-delay:.15s}
+.typing-dot:nth-child(3){animation-delay:.3s}
+@keyframes typingAnim{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-6px);opacity:1}}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:30px;right:30px;z-index:999;background:var(--wa);color:var(--white);width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);animation:waPulse 2.5s ease-in-out infinite;transition:transform .3s}
+@keyframes waPulse{0%,100%{box-shadow:0 8px 24px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.25)}60%{box-shadow:0 8px 24px rgba(37,211,102,.4),0 0 0 18px rgba(37,211,102,0)}}
+.wa-float:hover{transform:scale(1.12)}
+.wa-tooltip{position:absolute;right:76px;background:var(--navy);color:white;padding:8px 14px;border-radius:10px;font-size:12px;white-space:nowrap;font-weight:600;opacity:0;transition:opacity .3s;pointer-events:none}
+.wa-float:hover .wa-tooltip{opacity:1}
+
+/* ── CONTACT ── */
+#contact{background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:56px}
+.contact-form-box{background:var(--white);border-radius:24px;padding:40px;box-shadow:0 8px 32px rgba(10,22,40,.06);border:1px solid var(--border)}
+.contact-form-box .form-group input,
+.contact-form-box .form-group select,
+.contact-form-box .form-group textarea{background:var(--cream);border:1.5px solid rgba(10,22,40,.1);color:var(--text)}
+.contact-form-box .form-group input:focus,
+.contact-form-box .form-group select:focus,
+.contact-form-box .form-group textarea:focus{border-color:var(--bright);background:white;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.contact-form-box .form-group label{color:var(--navy)}
+.contact-form-box .form-group input::placeholder,.contact-form-box .form-group textarea::placeholder{color:var(--muted)}
+.contact-form-box .form-group select option{background:white;color:var(--text)}
+.contact-wa-btn{width:100%;background:var(--wa);color:white;padding:18px;border-radius:14px;font-size:15px;font-weight:700;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;transition:all .3s;font-family:'Outfit',sans-serif;text-decoration:none;letter-spacing:.5px}
+.contact-wa-btn:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,.3)}
+.contact-info-cards{display:flex;flex-direction:column;gap:16px}
+.ci-card{background:var(--white);border-radius:18px;padding:22px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 4px 16px rgba(10,22,40,.05);border:1px solid var(--border);transition:all .3s}
+.ci-card:hover{transform:translateX(6px);box-shadow:0 8px 24px rgba(37,99,235,.1);border-color:rgba(37,99,235,.2)}
+.ci-icon{width:46px;height:46px;min-width:46px;background:linear-gradient(135deg,var(--blue),var(--sky));border-radius:13px;display:flex;align-items:center;justify-content:center;color:white;font-size:19px}
+.ci-text strong{color:var(--navy);display:block;font-size:14px;margin-bottom:4px;font-weight:600}
+.ci-text a,.ci-text span{color:var(--muted);font-size:13.5px;text-decoration:none;line-height:1.6;display:block}
+.ci-text a:hover{color:var(--bright)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.55);padding:70px 5% 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:56px}
+.footer-brand-logo{width:64px;height:64px;border-radius:50%;margin-bottom:16px;border:2px solid rgba(59,130,246,.25)}
+.footer-brand p{font-size:13.5px;line-height:1.8;max-width:280px;margin-top:8px;color:rgba(255,255,255,.45)}
+.footer-col h4{color:var(--white);font-weight:600;margin-bottom:18px;font-size:14px;letter-spacing:.5px}
+.footer-col a,.footer-col p{display:block;color:rgba(255,255,255,.45);font-size:13.5px;text-decoration:none;margin-bottom:10px;transition:color .3s;line-height:1.7}
+.footer-col a:hover{color:var(--sky)}
+.footer-socials{display:flex;gap:10px;margin-top:20px}
+.social-link{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;font-size:16px;transition:all .3s}
+.social-link:hover{background:var(--bright);color:white;transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:120px;right:30px;background:var(--navy);color:var(--white);padding:14px 22px;border-radius:14px;font-size:13.5px;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:9999;transform:translateY(16px);opacity:0;transition:all .4s;pointer-events:none;border:1px solid rgba(59,130,246,.2)}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ── PETS FLOATING ELEMENTS ── */
+.paw-float{position:absolute;pointer-events:none;font-size:24px;opacity:.07;animation:pawDrift linear infinite}
+@keyframes pawDrift{0%{transform:translateY(0) rotate(0deg);opacity:.07}50%{opacity:.12}100%{transform:translateY(-60px) rotate(20deg);opacity:0}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;padding-top:140px}
+  .hero-right{display:none}
+  .why-grid,.appt-grid,.about-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item:nth-child(1){grid-column:span 1;grid-row:span 1}
+  .gallery-item:nth-child(1) .gallery-img-placeholder{height:180px}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:70px 5%}
+  .hero-btns{flex-direction:column}
+  .btn-primary,.btn-wa{justify-content:center}
+  .hero-stats{gap:20px}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .wa-float{bottom:20px;right:20px;width:56px;height:56px;font-size:22px}
+  .chatbot-btn{bottom:20px;left:20px;width:56px;height:56px;font-size:20px}
+  .chatbot-window{left:16px;right:16px;width:auto;bottom:90px}
+  .why-stats-row{grid-template-columns:1fr 1fr}
+  .map-cta-row{flex-direction:column}
+  .about-img-accent{bottom:-12px;right:-12px}
+  .services-header{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="./logo website.jpeg" class="logo-img" alt="Logo" id="navLogoImg">
+    <div>
+      <div class="logo-text-main">Islamabad Pets Clinic</div>
+      <div class="logo-text-sub">Mobile Vet Services</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#map-section">Location</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#appointment" class="nav-cta">Book Appointment</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#why" onclick="toggleMenu()">Why Us</a>
+  <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+  <a href="#appointment" onclick="toggleMenu()">Book Appointment</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge"><span class="hero-badge-dot"></span> Islamabad's Trusted Veterinary Specialist</div>
+      <h1 class="hero-title">Expert Care for<br><span class="line2">Every Beloved Pet</span></h1>
+      <div class="hero-clinic-name">Islamabad Pets Clinic · Bharakahu</div>
+      <p class="hero-desc">Professional veterinary services by Dr. Allah Bakhsh, DVM, M.Phil — 13+ years of compassionate care for companion animals, birds, and exotic pets across Islamabad & Rawalpindi.</p>
+      <div class="hero-btns">
+        <a href="#appointment" class="btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+        <a href="https://wa.me/923065070174" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num" data-target="13">0</div><div class="stat-label">Years Exp.</div></div>
+        <div class="stat"><div class="stat-num" data-target="5000">0</div><div class="stat-label">Pets Treated</div></div>
+        <div class="stat"><div class="stat-num" data-target="98">0</div><div class="stat-label">% Satisfied</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="doctor-card">
+        <div class="logo-badge">
+          <!-- <img src="./dr with tiger.jpeg" alt="Islamabad Pets Clinic Logo"> -->
+        </div>
+        <div class="doctor-img-wrap">
+          <img src="./dr with tiger.jpeg" alt="Dr. Allah Bakhsh">
+          <div class="doctor-img-overlay"></div>
+          <div class="doctor-info-overlay">
+            <div class="doctor-name-overlay">Dr. Allah Bakhsh</div>
+            <div class="doctor-qual-overlay">DVM · M.Phil Veterinary Surgery · 13 Years</div>
+          </div>
+        </div>
+        <div class="floating-badge">
+          <div class="floating-badge-num">13+</div>
+          <div class="floating-badge-label">Yrs Experience</div>
+        </div>
+        <div class="hero-paw-accent">🐾</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / INTRO -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-side" data-aos="fade-right">
+        <img src="./dr.png" alt="Dr. Allah Bakhsh with animal" class="about-clinic-img">
+        <div class="about-img-accent">
+          <div class="num">13+</div>
+          <div class="lbl">Years of Trust</div>
+        </div>
+      </div>
+      <div class="about-text" data-aos="fade-left">
+        <div class="section-tag">About Dr. Allah Bakhsh</div>
+        <h2 class="section-title">Your Pet's Health,<br>Our Passion</h2>
+        <p class="about-para" style="font-size:16px;line-height:1.9;color:var(--muted);margin-bottom:16px"><strong style="color:var(--navy)">My name is Dr. Allah Bakhsh</strong>, a veterinary surgeon with over <strong style="color:var(--navy)">13 years of hands-on experience</strong> treating and caring for companion animals and equines. My journey in veterinary medicine has taken me from the operating theatre to the field.</p>
+        <p class="about-para" style="font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:20px">At Islamabad Pets Clinic on Murree Road, Bharakahu, my mission is to provide compassionate, high-quality veterinary care that every pet owner can rely on. I also actively educate pet owners through digital platforms so help is always within reach.</p>
+        <div class="about-checklist">
+          <div class="about-check"><div class="chk"><i class="fas fa-check"></i></div>Government-registered & licensed veterinary clinic</div>
+          <div class="about-check"><div class="chk"><i class="fas fa-check"></i></div>Specialist in companion animals, birds & exotic pets</div>
+          <div class="about-check"><div class="chk"><i class="fas fa-check"></i></div>Mobile veterinary services — we come to you</div>
+          <div class="about-check"><div class="chk"><i class="fas fa-check"></i></div>Digital pet owner education & follow-up care</div>
+          <div class="about-check"><div class="chk"><i class="fas fa-check"></i></div>Located at Murree Road, Jeelani Stop, Bharakahu</div>
+        </div>
+        <div class="dr-qual-badges">
+          <span class="qual-badge">DVM</span>
+          <span class="qual-badge">M.Phil Vet Surgery</span>
+          <span class="qual-badge">13 Years Experience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-tag" data-aos="fade-up">Our Services</div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Complete Veterinary Care</h2>
+        <p class="section-sub" data-aos="fade-up" data-aos-delay="150">From routine check-ups to advanced surgery — complete pet healthcare under one roof.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="0"><div class="service-num">01</div><div class="service-card-inner"><div class="service-icon">💉</div><h3>Vaccinations</h3><p>Core & non-core vaccines for dogs, cats, birds & exotic pets. Complete immunization protocols with digital records.</p></div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="80"><div class="service-num">02</div><div class="service-card-inner"><div class="service-icon">🩺</div><h3>General Consultations</h3><p>Thorough clinical examinations, diagnosis & treatment plans for all health concerns by Dr. Allah Bakhsh.</p></div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="160"><div class="service-num">03</div><div class="service-card-inner"><div class="service-icon">🏥</div><h3>Surgery</h3><p>Routine & complex surgical procedures performed in a sterile environment with full anaesthesia monitoring.</p></div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="0"><div class="service-num">04</div><div class="service-card-inner"><div class="service-icon">🔬</div><h3>Hematology & Lab</h3><p>Complete blood panels, CBC, biochemistry & diagnostic pathology for accurate, fast results.</p></div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="80"><div class="service-num">05</div><div class="service-card-inner"><div class="service-icon">🏨</div><h3>Pet Boarding</h3><p>Safe, supervised boarding with 24-hour monitoring, feeding & care while you're away from home.</p></div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="160"><div class="service-num">06</div><div class="service-card-inner"><div class="service-icon">🛵</div><h3>Home Visits</h3><p>Mobile veterinary services — Dr. Allah Bakhsh comes to your doorstep for consultations & treatments.</p></div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="0"><div class="service-num">07</div><div class="service-card-inner"><div class="service-icon">🦴</div><h3>Pet Food & Accessories</h3><p>Premium pet food brands, supplements, collars, toys & accessories available in-clinic.</p></div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="80"><div class="service-num">08</div><div class="service-card-inner"><div class="service-icon">🦁</div><h3>Exotic Pet Care</h3><p>Specialist care for exotic animals including reptiles, rabbits, hamsters & more. Rare expertise available.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-tag" data-aos="fade-up">Why Choose Us</div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Islamabad's Most Trusted<br>Veterinary Expert</h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Medical excellence combined with genuine love for every animal we treat.</p>
+    <div class="why-grid">
+      <div class="why-features" data-aos="fade-right">
+        <div class="why-feat"><div class="feat-icon">🎓</div><div class="feat-text"><h4>Advanced Qualifications</h4><p>DVM & M.Phil in Veterinary Surgery — among the most qualified vets in the region.</p></div></div>
+        <div class="why-feat"><div class="feat-icon">📱</div><div class="feat-text"><h4>Mobile Vet Services</h4><p>Can't come to us? We'll come to you. Home visits available across Islamabad & Rawalpindi.</p></div></div>
+        <div class="why-feat"><div class="feat-icon">🦒</div><div class="feat-text"><h4>Exotic Animal Specialist</h4><p>Rare expertise in exotic, wild, and unusual animals — from lion cubs to reptiles.</p></div></div>
+        <div class="why-feat"><div class="feat-icon">💊</div><div class="feat-text"><h4>In-Clinic Pharmacy & Pet Store</h4><p>Medicines, food, and accessories — everything your pet needs in one visit.</p></div></div>
+        <div class="why-feat"><div class="feat-icon">📍</div><div class="feat-text"><h4>Easy to Find Location</h4><p>Murree Road, Jeelani Stop, opposite CITI Lab, Bharakahu — easily accessible from all areas.</p></div></div>
+      </div>
+      <div class="why-visual-side" data-aos="fade-left">
+        <div class="vet-photo">
+          <img src="https://avatars.mds.yandex.net/i?id=73843fbc187877eeba563a8b9e8dc7514707cb03-7764851-images-thumbs&n=13" alt="Dr. Allah Bakhsh caring for animal">
+          <div class="vet-overlay"></div>
+          <div class="vet-overlay-text">
+            <h4>Hands-On Expert Care</h4>
+            <p>Every patient treated with precision & love</p>
+          </div>
+        </div>
+        <div class="why-stats-row">
+          <div class="why-stat"><div class="why-stat-num" data-target="13">13+</div><div class="why-stat-lbl">Yrs Exp</div></div>
+          <div class="why-stat"><div class="why-stat-num" data-target="5000">798+</div><div class="why-stat-lbl">Pets Treated</div></div>
+          <div class="why-stat"><div class="why-stat-num" data-target="100">100</div><div class="why-stat-lbl">% Dedicated</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="section-tag" data-aos="fade-up">Client Reviews</div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Paw-sitive Feedback</h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Real stories from pet families across Islamabad & Rawalpindi.</p>
+  </div>
+  <div class="reviews-marquee-outer">
+    <div class="reviews-row" id="row1"></div>
+    <div class="reviews-row reverse" id="row2"></div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment">
+  <div class="section-inner">
+    <div class="section-tag" data-aos="fade-up">Online Booking</div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Book an Appointment</h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Fill in the form — we'll confirm via WhatsApp within minutes!</p>
+    <div class="appt-grid">
+      <div class="appt-form-box" data-aos="fade-right">
+        <div class="form-title">📋 Appointment Details</div>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="Ali Hassan" id="appt-name"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="0300-1234567" id="appt-phone"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Pet Name</label><input type="text" placeholder="Bruno" id="appt-pet"></div>
+          <div class="form-group"><label>Pet Type</label><select id="appt-type"><option>🐕 Dog</option><option>🐈 Cat</option><option>🦜 Bird</option><option>🐇 Rabbit</option><option>🐠 Fish</option><option>🦎 Exotic/Reptile</option><option>🐴 Horse/Equine</option><option>🦁 Wild Animal</option><option>Other</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Service Needed</label><select id="appt-service"><option>General Consultation</option><option>Vaccination</option><option>Surgery</option><option>Hematology / Lab Test</option><option>Home Visit</option><option>Boarding</option><option>Exotic Pet Care</option><option>Other</option></select></div>
+          <div class="form-group"><label>Preferred Date</label><input type="date" id="appt-date"></div>
+        </div>
+        <div class="form-group"><label>Additional Notes</label><textarea placeholder="Describe your pet's symptoms or anything we should know..." id="appt-notes"></textarea></div>
+        <div class="form-group">
+          <label>Pet Photo <span style="font-size:11px;opacity:.5;text-transform:none;letter-spacing:0">(Optional)</span></label>
+          <div class="img-upload-area" onclick="document.getElementById('petImgInput').click()">
+            <i class="fas fa-camera"></i>
+            <p>Tap to upload pet photo</p>
+            <span>JPG, PNG — helps Dr. assess condition in advance</span>
+          </div>
+          <input type="file" id="petImgInput" accept="image/*" multiple style="display:none" onchange="previewImages(this)">
+          <div class="img-preview-area" id="imgPreviewArea"></div>
+        </div>
+        <button class="btn-submit" onclick="sendApptWhatsApp()"><i class="fab fa-whatsapp" style="font-size:20px"></i> Send Appointment via WhatsApp</button>
+      </div>
+      <div class="appt-info-side" data-aos="fade-left">
+        <div class="appt-info-card">
+          <div class="appt-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="appt-icon-text">
+            <strong>Clinic Location</strong>
+            <span>Murree Road, Jeelani Stop<br>Opposite CITI Lab, Bharakahu<br>Islamabad</span>
+          </div>
+        </div>
+        <div class="appt-info-card">
+          <div class="appt-icon"><i class="fas fa-clock"></i></div>
+          <div class="appt-icon-text">
+            <strong>Clinic Hours</strong>
+            <div class="timing-grid">
+              <div class="timing-item"><div class="timing-day">Every Day</div><div class="timing-time">10 AM – 9 PM</div></div>
+              <div class="timing-item"><div class="timing-day">Home Visits</div><div class="timing-time">On Request</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="appt-info-card">
+          <div class="appt-icon"><i class="fab fa-whatsapp"></i></div>
+          <div class="appt-icon-text"><strong>WhatsApp</strong><span>+92 306 507 0174</span></div>
+        </div>
+        <div class="appt-info-card">
+          <div class="appt-icon"><i class="fas fa-phone"></i></div>
+          <div class="appt-icon-text"><strong>Call Us</strong><span>+92 321 528 4530</span></div>
+        </div>
+        <div class="appt-info-card">
+          <div class="appt-icon">🐾</div>
+          <div class="appt-icon-text"><strong>Animals We Treat</strong><span>Dogs · Cats · Birds · Rabbits · Exotic Pets · Horses · Wild Animals</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section" style="background:var(--cream);padding:80px 5%">
+  <div class="section-inner">
+    <div class="section-tag" data-aos="fade-up">Our Location</div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Find Us in Bharakahu</h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Easy to reach from Islamabad, Murree Road and surrounding areas.</p>
+    <div class="map-wrapper" data-aos="zoom-in">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3320.6!2d73.1700!3d33.6050!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df964c7d4b8b0d%3A0x5c2d1b!2sBharakahu%2C+Islamabad%2C+Pakistan!5e0!3m2!1sen!2s!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Islamabad Pets Clinic Location"></iframe>
+    </div>
+    <div class="map-cta-row">
+      <div class="map-address">
+        <div class="map-address-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="map-address-text">
+          <strong>Islamabad Pets Clinic</strong>
+          <span>Murree Road, Jeelani Stop, Opposite CITI Lab, Bharakahu, Islamabad</span>
+        </div>
+      </div>
+      <div class="map-cta-btns">
+        <a href="https://maps.google.com/?q=Bharakahu,Islamabad" target="_blank" class="btn-directions"><i class="fas fa-directions"></i> Get Directions</a>
+        <a href="tel:+923215284530" class="btn-call"><i class="fas fa-phone"></i> Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag" data-aos="fade-up">Get In Touch</div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Contact Us</h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Have a question? Drop us a message and we'll respond on WhatsApp instantly.</p>
+    <div class="contact-grid">
+      <div class="contact-form-box" data-aos="fade-right">
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Your name" id="c-name"></div>
+        <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="0300-1234567" id="c-phone"></div>
+        <div class="form-group"><label>Subject</label><select id="c-subject"><option>General Inquiry</option><option>Appointment</option><option>Home Visit Request</option><option>Emergency</option><option>Boarding</option><option>Feedback</option></select></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Write your message here..." id="c-msg" style="height:130px"></textarea></div>
+        <a href="#" class="contact-wa-btn" onclick="sendContactWhatsApp(event)"><i class="fab fa-whatsapp" style="font-size:20px"></i> Send on WhatsApp</a>
+      </div>
+      <div class="contact-info-cards" data-aos="fade-left">
+        <div class="ci-card"><div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div><div class="ci-text"><strong>Clinic Address</strong><span>Murree Road, Jeelani Stop, Opposite CITI Lab, Bharakahu, Islamabad</span></div></div>
+        <div class="ci-card"><div class="ci-icon"><i class="fab fa-whatsapp"></i></div><div class="ci-text"><strong>WhatsApp</strong><a href="https://wa.me/923065070174" target="_blank">+92 306 507 0174</a></div></div>
+        <div class="ci-card"><div class="ci-icon"><i class="fas fa-phone"></i></div><div class="ci-text"><strong>Phone</strong><a href="tel:+923215284530">+92 321 528 4530</a></div></div>
+        <div class="ci-card"><div class="ci-icon"><i class="fas fa-clock"></i></div><div class="ci-text"><strong>Hours</strong><span>Every Day · 10 AM – 9 PM<br>Home Visits Available on Request</span></div></div>
+        <div class="ci-card"><div class="ci-icon"><i class="fas fa-stethoscope"></i></div><div class="ci-text"><strong>Dr. Allah Bakhsh</strong><span>DVM · M.Phil Veterinary Surgery<br>13+ Years Experience</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="section-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="./logo website.jpeg" alt="IPC Logo" class="footer-brand-logo">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:white;font-weight:700">Islamabad Pets Clinic</div>
+        <p>Compassionate, expert veterinary care by Dr. Allah Bakhsh. Serving Islamabad & Rawalpindi with dedication.</p>
+        <div class="footer-socials">
+          <a href="https://wa.me/923065070174" class="social-link"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Vaccinations</a>
+        <a href="#services">General Consultations</a>
+        <a href="#services">Surgery</a>
+        <a href="#services">Hematology & Lab</a>
+        <a href="#services">Boarding</a>
+        <a href="#services">Home Visits</a>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About Dr. Allah Bakhsh</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#appointment">Book Appointment</a>
+        <a href="#map-section">Location</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>📍 Murree Rd, Bharakahu, Isb</p>
+        <a href="tel:+923215284530">📞 +92 321 528 4530</a>
+        <a href="https://wa.me/923065070174">💬 +92 306 507 0174</a>
+        <p>⏰ 10 AM – 9 PM Daily</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Islamabad Pets Clinic · Dr. Allah Bakhsh. All rights reserved. Made with ❤️ for every pet.</p>
+      <p>Murree Road, Jeelani Stop, Bharakahu, Islamabad</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/923065070174" target="_blank" class="wa-float">
+  <div class="wa-tooltip">Chat on WhatsApp!</div>
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- CHATBOT -->
+<button class="chatbot-btn" id="chatbotBtn" onclick="toggleChat()">
+  <i class="fas fa-comment-dots"></i>
+</button>
+
+<div class="chatbot-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-header-avatar">🐾</div>
+    <div class="chat-header-info">
+      <div class="name">IPC Assistant</div>
+      <div class="status"><span class="status-dot"></span> Online · Typically replies fast</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div id="quickRepliesArea" class="quick-replies"></div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="Type your question..." onkeydown="handleChatKey(event)">
+    <button class="chat-send" onclick="sendChatMsg()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Redirecting to WhatsApp...</div>
+
+<script>
+// ── CURSOR
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx-6+'px';cursor.style.top=my-6+'px'});
+setInterval(()=>{rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx-18+'px';ring.style.top=ry-18+'px'},16);
+document.querySelectorAll('a,button,.service-card,.why-feat,.review-card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';ring.style.transform='scale(1.5)';ring.style.borderColor='rgba(59,130,246,.8)'});el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)';ring.style.borderColor='rgba(59,130,246,.5)'})});
+
+// ── PARTICLES
+const pContainer=document.getElementById('particles');
+for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const x=Math.random()*100;const delay=Math.random()*8;const dur=6+Math.random()*10;const dx=(Math.random()-0.5)*100+'px';p.style.cssText=`left:${x}%;animation-duration:${dur}s;animation-delay:${delay}s;--dx:${dx}`;pContainer.appendChild(p)}
+
+// ── NAV
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>60));
+
+// ── MENU
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+
+// ── LOGO — use real logo from uploads
+const logoEl = document.getElementById('navLogoImg');
+logoEl.src = '/mnt/user-data/uploads/WhatsApp_Image_2026-05-07_at_5_46_31_PM.jpeg';
+
+// ── AOS
+const aosEls=document.querySelectorAll('[data-aos]');
+const aosObs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){const delay=parseInt(e.target.dataset.aosDelay||0);setTimeout(()=>e.target.classList.add('aos-animate'),delay);aosObs.unobserve(e.target)}})},{threshold:.1});
+aosEls.forEach(el=>aosObs.observe(el));
+
+// ── COUNTERS
+function animateCount(el){const target=+el.dataset.target;const suffix=el.parentElement.querySelector('.stat-label')?.textContent.includes('%')||el.parentElement.querySelector('.why-stat-lbl')?.textContent.includes('%')?'%':'';let c=0;const step=Math.ceil(target/60);const t=setInterval(()=>{c=Math.min(c+step,target);const s=c>=1000?(c/1000).toFixed(1)+'K':c;el.textContent=s+(target>=100&&target!=5000?'+':'');if(c>=target){el.textContent=(target>=1000?(target/1000).toFixed(1)+'K':target)+(target!=98&&target!=100?'+':target==100?'%':target==98?'%':'');clearInterval(t)}},25)}
+const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('[data-target]').forEach(animateCount);countObs.disconnect()}})},{threshold:.3});
+const heroSec=document.getElementById('hero');if(heroSec)countObs.observe(heroSec);
+
+// ── REVIEWS DATA
+const reviews=[
+  {text:'Dr. Allah Bakhsh is absolutely brilliant — my German Shepherd had surgery and recovered beautifully. Best vet in Islamabad!',name:'Ahmed Raza',loc:'F-10, Islamabad',emoji:'A',pet:'German Shepherd'},
+  {text:'Brought my Persian cat for vaccinations. The doctor is so gentle and knowledgeable. Will always come back here.',name:'Sana Malik',loc:'G-11, Islamabad',emoji:'S',pet:'Persian Cat Owner'},
+  {text:'Emergency consultation at odd hours — he was available and professional. My Labrador is healthy because of him.',name:'Usman Ali',loc:'Rawalpindi',emoji:'U',pet:'Labrador Owner'},
+  {text:'Finally a vet who knows exotic pets! My cockatiel got the best care here. Highly recommended for bird owners.',name:'Fatima Tariq',loc:'E-7, Islamabad',emoji:'F',pet:'Bird Owner'},
+  {text:'Home visit service is amazing. Dr. came to us quickly and my cat was treated without any stress. 10/10!',name:'Hassan Mirza',loc:'Bahria Town, Rwp',emoji:'H',pet:'Cat Owner'},
+  {text:'Very affordable and expert care. The hematology results were accurate and the treatment worked perfectly.',name:'Ayesha Khan',loc:'Saddar, Rawalpindi',emoji:'A',pet:'Dog Owner'},
+  {text:'My rabbit was very sick and Dr. Allah Bakhsh handled it with such care and expertise. Amazing doctor!',name:'Bilal Shah',loc:'DHA, Islamabad',emoji:'B',pet:'Rabbit Owner'},
+  {text:'Visited for pet boarding. My dog was so well cared for while we were away. Clean facility and loving staff.',name:'Nadia Hussain',loc:'Koral, Islamabad',emoji:'N',pet:'Dog Owner'},
+  {text:'The surgery went perfectly. Very professional setup and Dr. kept us informed throughout the procedure.',name:'Tariq Mahmood',loc:'Wah Cantt',emoji:'T',pet:'Cat Owner'},
+  {text:'Best vet in the twin cities without a doubt. My exotic reptile got specialist care I couldn\'t find anywhere else!',name:'Zara Ahmed',loc:'Gulraiz, Rawalpindi',emoji:'Z',pet:'Reptile Owner'},
+];
+
+function makeCard(r){
+  return `<div class="review-card"><div class="stars">★★★★★</div><p class="review-text">"${r.text}"</p><div class="reviewer"><div class="rev-avatar">${r.emoji}</div><div><div class="rev-name">${r.name}</div><div class="rev-loc">📍 ${r.loc}<br><span class="rev-verified"><i class="fas fa-check-circle"></i> Verified · ${r.pet}</span></div></div></div></div>`;
+}
+
+const row1=document.getElementById('row1');
+const row2=document.getElementById('row2');
+const half=Math.floor(reviews.length/2);
+const r1=reviews.slice(0,half+1);
+const r2=reviews.slice(half);
+[...r1,...r1].forEach(r=>row1.insertAdjacentHTML('beforeend',makeCard(r)));
+[...r2,...r2].forEach(r=>row2.insertAdjacentHTML('beforeend',makeCard(r)));
+
+// ── IMAGE PREVIEW
+function previewImages(input){
+  const area=document.getElementById('imgPreviewArea');
+  area.innerHTML='';
+  Array.from(input.files).slice(0,4).forEach(f=>{
+    const r=new FileReader();
+    r.onload=e=>{const img=document.createElement('img');img.src=e.target.result;img.className='img-thumb';area.appendChild(img)}
+    r.readAsDataURL(f);
+  });
+}
+
+// ── WHATSAPP APPOINTMENT
+function sendApptWhatsApp(){
+  const name=document.getElementById('appt-name').value||'Not provided';
+  const phone=document.getElementById('appt-phone').value||'Not provided';
+  const pet=document.getElementById('appt-pet').value||'Not provided';
+  const type=document.getElementById('appt-type').value;
+  const service=document.getElementById('appt-service').value;
+  const date=document.getElementById('appt-date').value||'Flexible';
+  const notes=document.getElementById('appt-notes').value||'None';
+  const hasImg=document.getElementById('petImgInput').files.length>0;
+  const msg=`🐾 *New Appointment — Islamabad Pets Clinic*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n🐶 *Pet:* ${pet} (${type})\n🩺 *Service:* ${service}\n📅 *Date:* ${date}\n📝 *Notes:* ${notes}${hasImg?'\n🖼️ *Pet Photo:* Will be shared separately':''}\n\n_Sent from IslamabadPetsClinic.com_`;
+  showToast();
+  setTimeout(()=>window.open(`https://wa.me/923065070174?text=${encodeURIComponent(msg)}`,'_blank'),600);
+}
+
+// ── WHATSAPP CONTACT
+function sendContactWhatsApp(e){
+  e.preventDefault();
+  const name=document.getElementById('c-name').value||'Not provided';
+  const phone=document.getElementById('c-phone').value||'Not provided';
+  const subject=document.getElementById('c-subject').value;
+  const msg_text=document.getElementById('c-msg').value||'Not provided';
+  const msg=`🐾 *Contact Message — Islamabad Pets Clinic*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📌 *Subject:* ${subject}\n💬 *Message:* ${msg_text}\n\n_Sent from IslamabadPetsClinic.com_`;
+  showToast();
+  setTimeout(()=>window.open(`https://wa.me/923065070174?text=${encodeURIComponent(msg)}`,'_blank'),600);
+}
+
+function showToast(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+
+// ── CHATBOT
+const chatOpen=()=>document.getElementById('chatWindow').classList.contains('open');
+function toggleChat(){
+  const win=document.getElementById('chatWindow');
+  win.classList.toggle('open');
+  if(win.classList.contains('open')&&document.getElementById('chatMessages').children.length===0){
+    setTimeout(()=>addBotMsg("Assalamu Alaikum! 👋 Welcome to Islamabad Pets Clinic.\n\nI'm here to help you. What would you like to know?"),300);
+    setTimeout(showQuickReplies,800);
+  }
+}
+
+const botAnswers={
+  'services':'🩺 We offer: Vaccinations, General Consultations, Surgery, Hematology & Lab Tests, Boarding, Home Visits, Pet Food & Accessories, and Exotic Animal Care.',
+  'timing':'⏰ We are open *Every Day* from *10 AM to 9 PM*.\n\nHome visits are available on request!',
+  'location':'📍 We are located at:\n*Murree Road, Jeelani Stop, Opposite CITI Lab, Bharakahu, Islamabad.*\n\nEasy to find on Murree Road!',
+  'contact':'📞 Call: +92 321 528 4530\n💬 WhatsApp: +92 306 507 0174\n\nWhatsApp is fastest for quick replies!',
+  'doctor':'👨‍⚕️ Dr. Allah Bakhsh holds a *DVM & M.Phil in Veterinary Surgery* with *13+ years of experience* treating companion animals, equines, and exotic pets.',
+  'home visit':'🛵 Yes! We offer home visit services across Islamabad & Rawalpindi. Please WhatsApp us at +92 306 507 0174 to schedule.',
+  'emergency':'🚨 For emergencies, please call *+92 321 528 4530* immediately or WhatsApp us at *+92 306 507 0174*.',
+  'price':'💰 Consultation fees are very affordable. For specific service pricing, please WhatsApp us at +92 306 507 0174 for the latest rates.',
+  'appointment':'📅 You can book an appointment by filling the form above or WhatsApp us directly at +92 306 507 0174!',
+};
+
+const quickQ=[
+  {label:'⏰ Timing',key:'timing'},
+  {label:'📍 Location',key:'location'},
+  {label:'🩺 Services',key:'services'},
+  {label:'👨‍⚕️ About Doctor',key:'doctor'},
+  {label:'🏠 Home Visit',key:'home visit'},
+  {label:'🚨 Emergency',key:'emergency'},
+];
+
+function showQuickReplies(){
+  const area=document.getElementById('quickRepliesArea');
+  area.innerHTML='';
+  quickQ.forEach(q=>{
+    const btn=document.createElement('button');
+    btn.className='quick-btn';
+    btn.textContent=q.label;
+    btn.onclick=()=>{addUserMsg(q.label);setTimeout(()=>addBotMsg(botAnswers[q.key]),600);area.innerHTML=''};
+    area.appendChild(btn);
+  });
+}
+
+function addBotMsg(text){
+  const msgs=document.getElementById('chatMessages');
+  const div=document.createElement('div');
+  div.className='msg bot';
+  div.style.whiteSpace='pre-line';
+  // typing effect
+  const typing=document.createElement('div');
+  typing.className='typing-indicator';
+  typing.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  msgs.appendChild(typing);
+  msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{typing.remove();div.textContent=text;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight},700);
+}
+
+function addUserMsg(text){
+  const msgs=document.getElementById('chatMessages');
+  const div=document.createElement('div');
+  div.className='msg user';
+  div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function sendChatMsg(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  addUserMsg(text);
+  input.value='';
+  document.getElementById('quickRepliesArea').innerHTML='';
+  const lower=text.toLowerCase();
+  let reply='Thank you for your question! For detailed assistance, please WhatsApp Dr. Allah Bakhsh at +92 306 507 0174 or call +92 321 528 4530. 😊';
+  if(lower.includes('time')||lower.includes('timing')||lower.includes('open')||lower.includes('hours'))reply=botAnswers.timing;
+  else if(lower.includes('location')||lower.includes('where')||lower.includes('address'))reply=botAnswers.location;
+  else if(lower.includes('service')||lower.includes('treat')||lower.includes('offer'))reply=botAnswers.services;
+  else if(lower.includes('doctor')||lower.includes('dr')||lower.includes('allah'))reply=botAnswers.doctor;
+  else if(lower.includes('home')||lower.includes('visit')||lower.includes('come'))reply=botAnswers['home visit'];
+  else if(lower.includes('emergency')||lower.includes('urgent'))reply=botAnswers.emergency;
+  else if(lower.includes('price')||lower.includes('fee')||lower.includes('cost')||lower.includes('charge'))reply=botAnswers.price;
+  else if(lower.includes('contact')||lower.includes('number')||lower.includes('phone')||lower.includes('whatsapp'))reply=botAnswers.contact;
+  else if(lower.includes('book')||lower.includes('appoint'))reply=botAnswers.appointment;
+  setTimeout(()=>addBotMsg(reply),800);
+}
+
+function handleChatKey(e){if(e.key==='Enter')sendChatMsg()}
+
+// ── SMOOTH SCROLL for nav
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+
+// ── PAWS floating in hero
+const heroEl=document.getElementById('hero');
+['🐾','🐕','🐈','🦜','🐇'].forEach((em,i)=>{const span=document.createElement('div');span.className='paw-float';span.textContent=em;span.style.cssText=`left:${10+i*20}%;bottom:${5+Math.random()*20}%;animation-duration:${4+Math.random()*4}s;animation-delay:${i*0.5}s`;heroEl.appendChild(span)});
+</script>
+</body>
+</html>
